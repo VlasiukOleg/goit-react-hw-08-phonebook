@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ImCancelCircle } from 'react-icons/im';
 
 export const Contacts = styled.ul`
   list-style: none;
