@@ -2,6 +2,7 @@ import { FilterInput } from './ContactFilter.styled';
 import { useDispatch } from 'react-redux';
 
 import { changeFilter } from 'redux/filterSlice';
+import TextField from '@mui/material/TextField';
 
 export const ContactFilter = () => {
   const dispatch = useDispatch();
@@ -12,13 +13,13 @@ export const ContactFilter = () => {
 
   return (
     <FilterInput>
-      <span>Find contacts by name</span>
-
-      <input
-        type="text"
-        name="filter"
-        // value={filter}
+      <TextField
+        id="standard-search"
+        label="Search contacts"
+        type="search"
+        variant="standard"
         onChange={onChangeFilter}
+        sx={{ mb: 2, mt: 2 }}
       />
     </FilterInput>
   );

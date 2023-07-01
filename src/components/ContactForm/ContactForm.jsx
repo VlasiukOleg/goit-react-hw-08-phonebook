@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { PhoneBookForm, AddButton, Message } from './ContactForm.styled';
+import { PhoneBookForm, Message } from './ContactForm.styled';
 
 import { useForm } from 'react-hook-form';
 
@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 
 import { getContacts, getIsLoading } from 'redux/selectors';
+
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -32,53 +35,54 @@ export const ContactForm = () => {
       }
     }
 
-    dispatch(addContact(data.name, data.phone));
+    console.log(data);
+
+    dispatch(addContact(data));
 
     reset();
   };
 
   return (
     <PhoneBookForm onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <span>Name</span>
-        <input
-          type="text"
-          name="name"
-          {...register('name', {
-            required: true,
-            pattern:
-              /^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/i,
-          })}
-        />
-        {errors.name && (
-          <Message>
-            Name may contain only letters, apostrophe, dash and spaces.
-          </Message>
-        )}
-      </label>
-
-      <label>
-        <span>Number</span>
-        <input
-          type="tel"
-          name="number"
-          {...register('number', {
-            required: true,
-            pattern:
-              /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i,
-          })}
-        />
-        {errors.number && (
-          <Message>
-            Phone number must be digits and can contain spaces, dashes,
-            parentheses and can start with +
-          </Message>
-        )}
-      </label>
-
-      <AddButton type="submit" disabled={isLoading}>
+      <TextField
+        id="outlined-basic"
+        type="text"
+        label="Name"
+        variant="outlined"
+        name="name"
+        size="small"
+        sx={{ mb: 2 }}
+        {...register('name', {
+          required: true,
+          pattern:
+            /^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$/i,
+        })}
+      />
+      {errors.name && <Message>Name may contain only letters</Message>}
+      <TextField
+        id="outlined-basic"
+        type="text"
+        label="Number"
+        variant="outlined"
+        name="name"
+        size="small"
+        sx={{ mb: 2 }}
+        {...register('number', {
+          required: true,
+          pattern:
+            /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i,
+        })}
+      />
+      {errors.number && <Message>Phone number must be digits</Message>}
+      <Button
+        variant="contained"
+        type="submit"
+        size="small"
+        disabled={isLoading}
+        color="success"
+      >
         Add contact
-      </AddButton>
+      </Button>
     </PhoneBookForm>
   );
 };

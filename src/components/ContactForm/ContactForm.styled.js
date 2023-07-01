@@ -1,24 +1,9 @@
 import styled from 'styled-components';
 
 export const PhoneBookForm = styled.form`
-  label {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 10px;
-
-    span {
-      margin-bottom: 5px;
-    }
-
-    input {
-      width: 320px;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      padding: 5px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const AddButton = styled.button`
@@ -40,5 +25,5 @@ export const Message = styled.div`
   width: 340px;
   font-size: 12px;
   color: tomato;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 `;
