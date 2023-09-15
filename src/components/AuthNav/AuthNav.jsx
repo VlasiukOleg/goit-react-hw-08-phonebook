@@ -5,6 +5,8 @@ export const AuthNav = () => {
     <div>
       <AuthLink to="/signup">Register</AuthLink>
       <AuthLink to="/login">Log In </AuthLink>
+      <AuthLink to="/paramsform">ParamsForm </AuthLink>
+
     </div>
   );
 };

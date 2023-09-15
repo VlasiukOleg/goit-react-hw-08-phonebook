@@ -6,9 +6,13 @@ import { MainLink, Nav } from './Navigation.styled';
 
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
+
+
+
 export const Navigation = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   console.log(isLoggedIn);
+
   return (
     <Nav>
       <MainLink to="/">
@@ -17,6 +21,7 @@ export const Navigation = () => {
       </MainLink>
 
       {isLoggedIn && <MainLink to="/contacts">Contacts</MainLink>}
+      
     </Nav>
   );
 };

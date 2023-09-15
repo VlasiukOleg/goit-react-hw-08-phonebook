@@ -14,6 +14,8 @@ const SignUpPage = lazy(() => import('../pages/RegistrationPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 
+const FormParamsPage = lazy(() => import('../pages/ParamsFormPage'))
+
 export const App = () => {
   const isRefreshing = useSelector(getIsRefreshing);
   const dispatch = useDispatch();
@@ -38,6 +40,12 @@ export const App = () => {
           path="/login"
           element={
             <RestrictedRoute redirectTo="/contacts" component={LoginPage} />
+          }
+        />
+        <Route
+          path="/paramsform"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={FormParamsPage} />
           }
         />
         <Route
